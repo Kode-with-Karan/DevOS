@@ -1,6 +1,6 @@
- # DevOS — Project Scaffolding & Bootstrapper
+# DevOS — Project Scaffolding & Bootstrapper
 
-Welcome to DevOS — a local-first project scaffolding tool that turns short goals into complete, safe, and executable project plans. DevOS combines a Python/FastAPI backend with a Qt6 desktop frontend to give you an interactive demo-ready experience.
+Welcome to DevOS — a local-first project scaffolding tool that turns short goals into complete, safe, and executable project plans. DevOS combines a Python/FastAPI backend and a Qt6 desktop frontend to provide an interactive, demo-ready experience.
 
 🚀 Quick demo (recommended)
 1. Start the backend (quick fallback mode):
@@ -25,7 +25,7 @@ Create a Django ecommerce site with a React frontend.
 - Safe execution: command validation + sandboxing + batched execution for long plans.
 - UI-first experience: file tree, logs, command list, and F11 fullscreen toggle.
 
-## Project layout (high level)
+## Project layout (high-level)
 - `devos-backend/` — FastAPI backend that generates and executes plans.
 - `DevOS/` — Qt6 C++ desktop frontend (UI in `DevOS/ui`, core helpers in `DevOS/core`).
 
@@ -60,7 +60,7 @@ Generate a plan (example):
 Invoke-RestMethod -Method Post -Uri http://localhost:8000/generate-plan -ContentType "application/json" -Body '{"prompt":"Create a Django ecommerce site with React frontend"}'
 ```
 
-Execute the plan from the UI: Generate → Execute → pick a folder → watch the Logs.
+Execute the plan from the UI: Generate → Execute → pick a folder → watch the logs.
 
 If target folder is non-empty and the scaffolder needs an empty directory, DevOS creates a subfolder `<project_name>` and runs the scaffolder there to avoid conflicts.
 
@@ -80,7 +80,7 @@ You are DevOS. Output ONLY a JSON object matching this schema:
 	"ide": "string"
 }
 
-Rules: no source code in `files[].content` unless requested; place scaffolder/installer commands first, then mkdirs, then file-creation commands last. Use Windows-safe commands and relative paths only.
+Rules: Do not include source code in `files[].content` unless requested. Place scaffolder/installer commands first, then mkdirs, and finally file-creation commands. Use Windows-safe commands and relative paths only.
 ```
 
 ---
